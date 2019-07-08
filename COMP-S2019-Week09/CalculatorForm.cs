@@ -12,9 +12,36 @@ namespace COMP_S2019_Week09
 {
     public partial class CalculatorForm : Form
     {
+        /// <summary>
+        /// This is the constructor for the calculator
+        /// </summary>
         public CalculatorForm()
         {
             InitializeComponent();
+        }
+        /// <summary>
+        /// This is a shared event handler for the Calculator Button click event
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void CalculatorButton_Click(object sender, EventArgs e)
+        {
+            // Cast sender as Button 
+            // var TheButtton = (Button)sender;
+            var TheButtton = sender as Button;
+
+            int ButtonValue;
+            bool Result = int.TryParse(TheButtton.Text, out ButtonValue);
+            if (Result)
+            {
+                ResultLabel.Text = TheButtton.Text;
+            }
+            else
+            {
+                ResultLabel.Text = "Not a Number (NAN)";
+            }
+
+            
         }
     }
 }
